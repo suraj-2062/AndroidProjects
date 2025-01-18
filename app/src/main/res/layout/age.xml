@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Age"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/black"
+    android:padding="10dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Date of Birth"
+        android:textColor="@color/white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:backgroundTint="@color/black">
+
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"
+            android:layout_toRightOf="@+id/spinner1" />
+
+        <EditText
+            android:id="@+id/dob_year"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@+id/spinner2"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:hint="Year" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Current Date"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/gray" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:backgroundTint="@color/black">
+
+        <Spinner
+            android:id="@+id/spinner3"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="5dp"/>
+
+        <Spinner
+            android:id="@+id/spinner4"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_toRightOf="@+id/spinner3"
+            android:layout_marginRight="5dp"/>
+
+        <EditText
+            android:id="@+id/curr_year"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Year"
+            android:layout_toRightOf="@+id/spinner4"
+            android:textColor="@color/white"
+            android:inputType="number"/>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="10dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reset"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:text="Reset"
+            android:backgroundTint="@color/black"
+            android:layout_marginRight="30dp"/>
+
+        <Button
+            android:id="@+id/calculate_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calculate"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:backgroundTint="@color/black"/>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:orientation="vertical"
+        android:padding="20dp">
+        
+        <TextView
+            android:id="@+id/years"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:padding="3dp"/>
+        <TextView
+            android:id="@+id/months"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:padding="3dp"/>
+        <TextView
+            android:id="@+id/weeks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:padding="3dp"/>
+        <TextView
+            android:id="@+id/days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:padding="3dp"/>
+        <TextView
+            android:id="@+id/hours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:padding="3dp"/>
+        <TextView
+            android:id="@+id/minutes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:padding="3dp"/>
+        <TextView
+            android:id="@+id/seconds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:padding="3dp"/>
+
+
+        
+    </LinearLayout>
+
+
+</LinearLayout>

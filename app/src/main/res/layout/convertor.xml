@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Convertor"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center"
+    android:background="@color/black">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unit Convertor"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_marginBottom="50dp"
+        android:padding="10dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:gravity="center"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/temp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/temperature"
+            android:backgroundTint="@color/red" />
+
+        <TextView
+            android:id="@+id/t_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tempareture"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/temp"/>
+
+        <ImageView
+            android:id="@+id/discount"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_toRightOf="@id/temp"
+            android:background="@drawable/discount"
+            android:backgroundTint="@color/red" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginLeft="120dp"
+            android:text="Discount"
+            android:layout_below="@+id/discount"/>
+
+        <ImageView
+            android:id="@+id/area"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:layout_toRightOf="@id/discount"
+            android:background="@drawable/area"
+            android:backgroundTint="@color/red" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginLeft="210dp"
+            android:text="Area"
+            android:layout_below="@+id/discount"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_weight="0"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/time"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/time"
+            android:backgroundTint="@color/red"/>
+
+        <TextView
+            android:id="@+id/time_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/time"/>
+
+        <ImageView
+            android:id="@+id/bmi"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/bmi"
+            android:layout_toRightOf="@id/time"
+            android:backgroundTint="@color/red"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginLeft="120dp"
+            android:text="BMI"
+            android:layout_below="@+id/bmi"/>
+
+        <ImageView
+            android:id="@+id/data"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/data"
+            android:layout_toRightOf="@id/bmi"
+            android:backgroundTint="@color/red"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginLeft="210dp"
+            android:text="Data"
+            android:layout_below="@+id/data"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_weight="0"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/age"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/age"
+            android:backgroundTint="@color/red"
+            android:layout_margin="20dp"/>
+
+        <TextView
+            android:id="@+id/age_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age"
+            android:layout_marginLeft="30dp"
+            android:textColor="@color/white"
+            android:layout_below="@+id/age"/>
+        <ImageView
+            android:id="@+id/currency"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/currency"
+            android:layout_toRightOf="@id/age"
+            android:backgroundTint="@color/red"/>
+
+        <TextView
+            android:id="@+id/curr_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginLeft="110dp"
+            android:text="Currency"
+            android:layout_below="@+id/currency"/>
+
+        <ImageView
+            android:id="@+id/bin_con"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="20dp"
+            android:background="@drawable/number_con"
+            android:layout_toRightOf="@id/curr_text"
+            android:backgroundTint="@color/red"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginLeft="200dp"
+            android:text="Numeric"
+            android:layout_below="@+id/bin_con"/>
+
+    </RelativeLayout>
+</LinearLayout>

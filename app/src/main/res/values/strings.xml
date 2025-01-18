@@ -1,0 +1,37 @@
+<resources>
+    <string name="App_name">Calculator &amp; Converter</string>
+    <string name="calculator">Calculator</string>
+    <string name="converter">Convertor</string>
+    <string name="about_bmi">"Body mass index (BMI) is a person's weight in kilograms divided by the square of height in meters. BMI is an easy screening method for weight category."</string>
+
+    <string name="kwd">KWD :  </string>
+    <string name="bhd">BHD :  </string>
+    <string name="omr">OMR :  </string>
+    <string name="jod">JOD :  </string>
+    <string name="gip">GIP :  </string>
+    <string name="gbp">GBP :  </string>
+    <string name="chf">CHF :  </string>
+    <string name="eur">EUR :  </string>
+    <string name="usd">USD :  </string>
+    <string name="inr">INR :  </string>
+    <string name="pkr">PKR :  </string>
+    <string name="cny">CNY :  </string>
+
+    <string name="b">  Bytes</string>
+    <string name="kb"> KB</string>
+    <string name="mb"> MB</string>
+    <string name="gb"> GB</string>
+    <string name="tb"> TB</string>
+    <string name="pb"> PB</string>
+
+    <string name="year">Years</string>
+    <string name="week">Weeks</string>
+    <string name="day"> Days</string>
+    <string name="hour">Hr</string>
+    <string name="minute">Min</string>
+    <string name="second">Sec</string>
+    <string name="milliseconds">Milisec</string>
+    <string name="microseconds">Misec</string>
+    <string name="picoseconds">Pisec</string>
+
+</resources>
