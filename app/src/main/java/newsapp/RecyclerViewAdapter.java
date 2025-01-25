@@ -7,6 +7,8 @@ import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,19 +21,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private ArrayList<GetData> list;
     Context context;
     public RecyclerViewAdapter(ArrayList<GetData> list, Context context) {
         this.list = list;
         this.context=context;
     }
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(context).inflate(R.layout.cardview,parent,false);
         return new ViewHolder(view);
     }
 
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerViewAdapter.ViewHolder holder, int position) {
         GetData data=list.get(position);
         holder.title.setText(data.getTitle());
         holder.content.setText(data.getContents());
@@ -44,10 +46,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         });
 
         new Thread(() -> {
-            Bitmap bitmap = getBitmapFromURL(data.getImage_url());
+            Bitmap bitmap;
+            try {
+                bitmap = getBitmapFromURL(data.getImage_url());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            Bitmap finalBitmap = bitmap;
             holder.image_url.post(() -> {
-                if (bitmap != null) {
-                    holder.image_url.setImageBitmap(bitmap);
+                if (finalBitmap != null) {
+                    holder.image_url.setImageBitmap(finalBitmap);
                 } else {
                     holder.image_url.setImageResource(R.drawable.icon);
                 }
@@ -58,7 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     public int getItemCount() {
         return list.size();
     }
-    public static Bitmap getBitmapFromURL(String imgUrl) {
+    public static Bitmap getBitmapFromURL(String imgUrl){
         try {
             URL url = new URL(imgUrl);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -69,6 +77,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         } catch (IOException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public ImageView image_url;
+        public TextView title,content,source_url;
+        public ViewHolder(View view) {
+            super(view);
+            image_url=view.findViewById(R.id.image_url);
+            title=view.findViewById(R.id.title);
+            content=view.findViewById(R.id.content);
+            source_url=view.findViewById(R.id.source_url);
         }
     }
 

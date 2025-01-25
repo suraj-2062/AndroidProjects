@@ -35,7 +35,6 @@ public class GetNews {
         return list;
     }
     public String getResponse(String str) throws Exception{
-
         URL url=new URL(str);
         HttpsURLConnection connection=(HttpsURLConnection) url.openConnection();
         connection.setRequestProperty("accept","application/json");
