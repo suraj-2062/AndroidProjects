@@ -9,18 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class RecyclerViewAdapterOld extends RecyclerView.Adapter<ViewHolder> {
     private ArrayList<GetData> list;
     Context context;
-    public RecyclerViewAdapter(ArrayList<GetData> list,Context context) {
+    public RecyclerViewAdapterOld(ArrayList<GetData> list, Context context) {
         this.list = list;
         this.context=context;
     }
@@ -34,7 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.title.setText(data.getTitle());
         holder.content.setText(data.getContents());
         holder.source_url.setOnClickListener(view -> {
-            Intent intent=new Intent(view.getContext(),RecyclerViewAdapter.class);
+            Intent intent=new Intent(view.getContext(), RecyclerViewAdapterOld.class);
             intent.putExtra("url",data.getSource_url());
             view.getContext().startActivity(intent);
         });

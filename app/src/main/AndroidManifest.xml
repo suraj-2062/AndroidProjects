@@ -23,9 +23,8 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".Webview"
-            android:exported="true" />
+        <activity android:name="newsapp.WebviewActivity"
+            android:exported="true"/>
         <!--
        <activity
            android:name="views.SearchViewClass"

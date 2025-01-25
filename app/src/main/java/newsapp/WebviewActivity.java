@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.calculatorconverter.R;
 
-public class Webview extends AppCompatActivity {
+public class WebviewActivity extends AppCompatActivity {
     WebView webview;
     @SuppressLint("MissingInflatedId")
     protected void onCreate(Bundle savedInstanceState){

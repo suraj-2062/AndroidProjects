@@ -1,16 +1,10 @@
 package com.example.calculatorconverter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,7 +44,7 @@ public class NewsApp extends AppCompatActivity {
             list = result;
 
             // Set the adapter with the fetched data
-            RecyclerViewAdapter adapter = new RecyclerViewAdapter(list, NewsApp.this);
+            RecyclerViewAdapterOld adapter = new RecyclerViewAdapterOld(list, NewsApp.this);
             recycler_view.setAdapter(adapter);
         }
     }
