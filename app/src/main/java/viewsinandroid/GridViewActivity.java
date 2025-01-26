@@ -18,7 +18,7 @@ public class GridViewActivity extends AppCompatActivity {
         gridview=findViewById(R.id.gridview);
         ArrayList<Details>list=new ArrayList<Details>();
 
-        list.add(new Details(R.drawable.age,"Age"));
+        list.add(new Details(R.drawable.age,"age"));
         list.add(new Details(R.drawable.area,"Area"));
         list.add(new Details(R.drawable.data,"Data"));
         list.add(new Details(R.drawable.number_con,"Number Conversion"));
