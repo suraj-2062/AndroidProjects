@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
@@ -10,13 +10,15 @@
         android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="10dp"
         app:cardMaxElevation="10dp"
-         app:cardBackgroundColor="#DF9F9E">
+        app:cardUseCompatPadding="true"
+        app:cardPreventCornerOverlap="true"
+        app:cardBackgroundColor="#DF9F9E">
 
         <RelativeLayout
-            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -28,11 +30,12 @@
             <TextView
                 android:id="@+id/title"
                 android:text="Title"
+                android:padding="5dp"
                 android:layout_width="220dp"
-                android:layout_height="60dp"
+                android:layout_height="100dp"
                 android:layout_toEndOf="@+id/image_url"
                 android:textAlignment="textStart"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="30dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif"
@@ -41,6 +44,7 @@
             <TextView
                 android:id="@+id/content"
                 android:text="Content"
+                android:padding="10dp"
                 android:layout_width="370dp"
                 android:layout_height="180dp"
                 android:layout_below="@+id/image_url"
@@ -59,7 +63,7 @@
                 android:text="Read more "
                 android:textStyle="bold"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="20dp"
                 android:textAlignment="textStart"/>
         </RelativeLayout>
 
