@@ -1,11 +1,9 @@
-package views;
+package viewsinandroid;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,30 +13,32 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.calculatorconverter.R;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SearchViewClass extends AppCompatActivity {
+public class SearchViewActivity extends AppCompatActivity {
 
-    SearchView searchview;
-    ListView listview;
-    List<String > list;
-    @SuppressLint("MissingInflatedId")
+    List<String> list;
+    SearchView searchView;
+    ListView listView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.searchview_class);
+        setContentView(R.layout.activity_search_view);
 
+        searchView=findViewById(R.id.searchview);
+        listView=findViewById(R.id.listview);
 
-        searchview=findViewById(R.id.searchview);
-        listview=findViewById(R.id.listview);
+        list=Arrays.asList("C","Java","Java Script","C++","Python");
+        ArrayAdapter<String>adapter=new ArrayAdapter<>(getApplicationContext(),android.R.layout.simple_list_item_1,list);
+        listView.setAdapter(adapter);
 
-        list= Arrays.asList("C++","C","JAVA","PYTHON","JAVA SCRIPT","HTML","CSS","ANDROID STUDIO");
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(views.SearchViewClass.this, android.R.layout.simple_list_item_1,list);
-        listview.setAdapter(adapter);
-
-        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
+                if(!s.isEmpty()){
+                    adapter.getFilter().filter(s);
+                }
                 return false;
             }
 

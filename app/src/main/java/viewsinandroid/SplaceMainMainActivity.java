@@ -1,4 +1,4 @@
-package views;
+package viewsinandroid;
 
 import android.os.Bundle;
 
@@ -10,11 +10,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.calculatorconverter.R;
 
-public class DropDown extends AppCompatActivity {
+public class SplaceMainMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dropdown);
+        setContentView(R.layout.activity_splace_main);
     }
 }
