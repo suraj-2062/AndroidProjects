@@ -14,28 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CalculatorConverter"
         tools:targetApi="31">
+
         <activity
-            android:name="newsapp.NewsApp"
-            android:exported="true" >
+            android:name="layouts.Tablelayout"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="newsapp.WebviewActivity"
-            android:exported="true"/>
         <!--
-       <activity
-           android:name="views.SearchViewClass"
-           android:exported="true">
-           <action android:name="android.intent.action.MAIN" />
-
-           <category android:name="android.intent.category.LAUNCHER" />
-       </activity>
-
         <activity
-            android:name=".NewsApp"
+            android:name="viewsinandroid.GridViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +33,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-          -->
+        -->
     </application>
 
 </manifest>
