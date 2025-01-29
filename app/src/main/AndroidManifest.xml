@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -14,26 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CalculatorConverter"
         tools:targetApi="31">
-
         <activity
-            android:name="layouts.Tablelayout"
+            android:name="newsapp.NewsAppSplaceScreeen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
         <activity
-            android:name="viewsinandroid.GridViewActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        -->
+            android:name="newsapp.WebviewActivity"
+            android:exported="true" />
+        <activity
+            android:name="newsapp.NewsApp"
+            android:exported="true"/>
     </application>
 
 </manifest>
