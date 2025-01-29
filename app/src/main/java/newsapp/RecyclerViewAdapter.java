@@ -39,8 +39,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.content.setText(data.getContents());
         holder.source_url.setOnClickListener(view -> {
             Intent intent=new Intent(view.getContext(), WebviewActivity.class);
-
-
             intent.putExtra("url",data.getSource_url());
             view.getContext().startActivity(intent); // Problem...
         });
