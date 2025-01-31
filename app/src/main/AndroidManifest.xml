@@ -16,8 +16,8 @@
         android:theme="@style/Theme.CalculatorConverter"
         tools:targetApi="31">
         <activity
-            android:name="toolbar.navigationActivity"
-            android:exported="true">
+            android:name="toolbar.ContextMenuActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
