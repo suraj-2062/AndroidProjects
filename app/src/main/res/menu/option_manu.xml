@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/forward"
+        android:title="Farward"
+        android:icon="@drawable/forward"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/back"
+        android:title="Back"
+        android:icon="@drawable/back"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/download"
+        android:title="Download"
+        android:icon="@drawable/download"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/navigation"
+        android:title="Navigation"
+        android:icon="@drawable/navigation"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/accessibility"
+        android:title="Accessibility"
+        android:icon="@drawable/accessibility"
+        app:showAsAction="ifRoom"/>
+</menu>
