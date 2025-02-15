@@ -4,123 +4,126 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.calculatorconverter.R;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class DownloadActivity extends AppCompatActivity {
-    private EditText url;
-    private Button download,location;
-    private Uri pickedFileUrl;
-    View view;
+
+    private EditText UrlId;
+    private Button downloadButton;
+    private String user_url;
+
     @SuppressLint("MissingInflatedId")
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_download);
 
-        url=findViewById(R.id.url);
-        download=findViewById(R.id.button);
-        location=findViewById(R.id.location);
+        UrlId = findViewById(R.id.url);
+        downloadButton = findViewById(R.id.button);
 
-        location.setOnClickListener(v -> filePick());
+        downloadButton.setOnClickListener(v -> {
+            user_url = UrlId.getText().toString().trim();
 
-        download.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String getUrl=url.getText().toString();
-                if(!getUrl.isEmpty()){
-                    if(pickedFileUrl!=null){
-                        fileDownload(getUrl,pickedFileUrl);
-                    }
-                    else{
-                        Toast.makeText(DownloadActivity.this, "Please picked file name", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    Toast.makeText(DownloadActivity.this, "Please enter Url than after download possible", Toast.LENGTH_SHORT).show();
-                }
-                view=getCurrentFocus();
-                if(view!=null){
-                    InputMethodManager ip=(InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                    ip.hideSoftInputFromWindow(view.getWindowToken(),0);
-                }
-                url.setText("");
+            if (user_url.isEmpty()) {
+                Toast.makeText(DownloadActivity.this, "Enter a valid URL!", Toast.LENGTH_SHORT).show();
+                return;
             }
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            if (inputMethodManager != null) {
+                inputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
+            }
+            askToSave();
         });
     }
 
-    private void filePick(){
-        String fileName= URLUtil.guessFileName(url.getText().toString(),null,null);
-        Intent intent=new Intent(Intent.ACTION_CREATE_DOCUMENT);
-        intent.setType("*/*");
-        intent.putExtra(Intent.EXTRA_TITLE,fileName);
+    private void askToSave() {
+        String file_original_name = URLUtil.guessFileName(user_url, null, null);
+
+        Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
-        filePickerLauncher.launch(intent);
+        intent.setType("*/*");
+        intent.putExtra(Intent.EXTRA_TITLE, file_original_name);
+        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        startActivityForResult(intent, 10);
     }
-    private final ActivityResultLauncher<Intent>filePickerLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),result ->{
-        if(result.getResultCode()==RESULT_OK && result.getData()!=null){
-            pickedFileUrl=result.getData().getData();
-            Toast.makeText(this, "File location selected", Toast.LENGTH_SHORT).show();
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 10 && resultCode == RESULT_OK && data != null) {
+            Uri fileUri = data.getData();
+            if (fileUri != null) {
+                UrlId.setText("");
+                Intent serviceIntent = new Intent(DownloadActivity.this, ForGroundService.class);
+                serviceIntent.setAction("START_DOWNLOAD");
+                startForegroundService(serviceIntent);
+                new Thread(() -> downloadData(user_url, fileUri)).start();
+            }
         }
-    });
-    private void fileDownload(String fileUrl,Uri urllcation){
-        new Thread(()->{
-            try {
-                URL getUrl=new URL(fileUrl);
-                HttpURLConnection connection=(HttpURLConnection) getUrl.openConnection();
-                connection.connect();
+    }
 
-                if(connection.getResponseCode()!=HttpURLConnection.HTTP_OK){
-                    runOnUiThread(()->{
-                        Toast.makeText(this, "Download Failed", Toast.LENGTH_SHORT).show();
-                        return;
-                    });
-                }
-                InputStream inputStream=connection.getInputStream();
-                OutputStream outputStream=getContentResolver().openOutputStream(urllcation);
-                
-                if(outputStream==null){
-                    runOnUiThread(()-> {
-                        Toast.makeText(this, "Error writing file", Toast.LENGTH_SHORT).show();
-                        return;
-                    });
-                }
-                byte[] buffer = new byte[4096];
-                int bytesRead;
-                while ((bytesRead = inputStream.read(buffer)) != -1) {
-                    outputStream.write(buffer, 0, bytesRead);
-                }
-                outputStream.flush();
-                outputStream.close();
-                inputStream.close();
+    public void downloadData(String fileUrl, Uri saveUri) {
+        Log.d("SURAJ", "saveUri ==> " + saveUri);
+        Log.d("SURAJ", "fileUrl ==> " + fileUrl);
 
-                runOnUiThread(() -> Toast.makeText(this, "Download Complete", Toast.LENGTH_SHORT).show());
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-                runOnUiThread(() -> Toast.makeText(this, "Download failed", Toast.LENGTH_SHORT).show());
+        HttpURLConnection connection = null;
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+
+        try {
+            URL url = new URL(fileUrl);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect(); // Problem
+
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                Toast.makeText(getApplicationContext(), "Connection Failded", Toast.LENGTH_SHORT).show();
+                return;
             }
 
-        }).start();
+            inputStream = connection.getInputStream();
+            outputStream = getContentResolver().openOutputStream(saveUri);
+
+            if (outputStream == null) {
+                Toast.makeText(getApplicationContext(), "OutputStream null", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            byte[] buffer = new byte[8192];
+            int bytesRead;
+
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+
+            outputStream.close();
+            inputStream.close();
+            connection.disconnect();
+
+            //Download completed
+
+            Intent intent = new Intent(DownloadActivity.this, ForGroundService.class);
+            intent.setAction("DOWNLOAD_COMPLETE");
+            startForegroundService(intent);
+
+
+        } catch (Exception e) {
+            Log.d("SURAJ", "" + e.getStackTrace());
+        }
     }
 }
