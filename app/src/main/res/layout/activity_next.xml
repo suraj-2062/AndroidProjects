@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="androidservices.NextActivity">
+    tools:context="androidpiller.NextActivity">
 
     <TextView
         android:text="This is Next Activity"

@@ -6,14 +6,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="androidpiller.BroadcastActivity"
     android:orientation="vertical"
-    android:gravity="center"
-    tools:context="androidpiller.NotificationActivity">
+    android:gravity="center">
 
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:text="BroadCastReceiver"
         android:layout_width="wrap_content"
-        android:text="Notification"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

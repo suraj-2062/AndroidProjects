@@ -1,4 +1,4 @@
-package androidservices;
+package androidpiller;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -10,11 +10,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.calculatorconverter.R;
