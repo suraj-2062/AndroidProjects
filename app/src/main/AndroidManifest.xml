@@ -12,14 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CalculatorConverter"
         tools:targetApi="31">
+
         <activity
-            android:name="sharedpreferences.HomeActivity"
+            android:name="demosharedpreference.ProfileScreen"
             android:exported="true" />
         <activity
-            android:name="sharedpreferences.LoginActivity"
+            android:name="demosharedpreference.RegisterScreen"
             android:exported="true" />
         <activity
-            android:name="sharedpreferences.SharedpreferenceActivity"
+            android:name="demosharedpreference.LoginScreen"
+            android:exported="true" />
+        <activity
+            android:name="demosharedpreference.DemoSharedPreference"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
